@@ -1,23 +1,10 @@
 import type { Router } from 'vue-router'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
-const headLessRoutes = [
-  {
-    path: '/login',
-    component: () => import('@/pages/login/index.vue'),
-  },
-]
-
-const mainRoutes = [{
-  path: 'home',
-  component: () => import('@/pages/home/index.vue'),
-}, {
-  path: 'about',
-  component: () => import('@/pages/about/index.vue'),
-}]
+import mainRoutes from './main'
 
 const router: Router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
@@ -25,16 +12,15 @@ const router: Router = createRouter({
       redirect: '/home',
       children: mainRoutes,
     },
-    ...headLessRoutes,
     {
       name: '404',
       path: '/404',
-      component: () => import('@/pages/not-found/index.vue'),
+      component: () => import('@/pages/frustrated/404.vue'),
     },
-    {
-      path: '/:catchAll(.*)', // 此处需特别注意至于最底部
-      redirect: '/404',
-    },
+    // {
+    //   path: '/:catchAll(.*)', // 此处需特别注意至于最底部
+    //   redirect: '/404',
+    // },
   ],
 })
 

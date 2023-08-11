@@ -1,14 +1,14 @@
-<template>
-    <div>
-        首页
-    </div>
-</template>
-
 <script setup lang="ts">
-    defineOptions({
-        name: 'home',
-    })
+defineOptions({
+  name: 'Home',
+})
 </script>
+
+<template>
+  <div>
+    首页
+  </div>
+</template>
 
 <style scoped>
 

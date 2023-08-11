@@ -6,9 +6,36 @@ import components from 'unplugin-vue-components/vite'
 import autoImport from 'unplugin-auto-import/vite'
 import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
 import compression from 'vite-plugin-compression2'
+import mkcert from 'vite-plugin-mkcert'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  plugins: [
+    vue(),
+    components({
+      resolvers: [VarletUIResolver()],
+    }),
+    autoImport({
+      imports: ['vue', 'vue-router', 'pinia'],
+      resolvers: [VarletUIResolver({ autoImport: true })],
+    }),
+    compression({ // 开启gzip压缩
+      include: [/\.html$/, /\.css$/, /\.js$/, /\.ttf$/],
+      skipIfLargerOrEqual: true,
+    }),
+    mkcert(),
+  ],
+  server: {
+    host: '0.0.0.0',
+    https: true,
+    port: 10010,
+    proxy: {
+      '/bot': {
+        target: 'https://api.telegram.org',
+        changeOrigin: true,
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
@@ -26,18 +53,4 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [
-    vue(),
-    components({
-      resolvers: [VarletUIResolver()],
-    }),
-    autoImport({
-      imports: ['vue', 'vue-router', 'pinia'],
-      resolvers: [VarletUIResolver({ autoImport: true })],
-    }),
-    compression({ // 开启gzip压缩
-      include: [/\.html$/, /\.css$/, /\.js$/, /\.ttf$/],
-      skipIfLargerOrEqual: true,
-    }),
-  ],
 })

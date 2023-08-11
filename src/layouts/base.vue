@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { BadgeProps } from '@varlet/ui'
+import { getUserAvatar } from '@/apis/index'
 
 defineOptions({
   name: 'LayoutBase',
@@ -8,13 +9,20 @@ defineOptions({
 const router = useRouter()
 const routIns = useRoute()
 const active = ref('/home')
+const avatar = ref('')
+const { id, username } = window?.Telegram?.WebApp?.initDataUnsafe?.user || {}
+
+if (id) {
+  getUserAvatar(id).then((res) => {
+    avatar.value = res
+  })
+}
 
 const badgeProps: BadgeProps = reactive({
   type: 'primary',
   value: '66',
   max: 99,
 })
-
 watch(() => active.value, router.replace)
 watch(
   () => routIns.path,
@@ -23,24 +31,26 @@ watch(
   },
   { immediate: true },
 )
-console.log('base', router.getRoutes(), routIns)
 </script>
 
 <template>
   <article class="container">
-    <var-app-bar title="标题">
+    <var-app-bar :title="routIns.meta.title" title-position="center">
       <template #left>
-        <var-button color="transparent" text-color="#fff" round text>
+        <var-space v-if="routIns.meta.tabPage" align="center">
+          <var-avatar :src="avatar" size="mini" />{{ username }}
+        </var-space>
+        <var-button v-else color="transparent" text-color="#fff" round text @click="router.back()">
           <var-icon name="chevron-left" :size="24" />
         </var-button>
       </template>
       <template #right>
-        <var-menu>
+        <var-menu placement="bottom-start">
           <var-button color="transparent" text-color="#fff" round text>
             <var-icon name="menu" :size="24" />
           </var-button>
           <template #menu>
-            <var-cell ripple>
+            <var-cell>
               选项卡
             </var-cell>
             <var-cell ripple>
@@ -60,16 +70,17 @@ console.log('base', router.getRoutes(), routIns)
         </transition>
       </router-view>
     </section>
-    <var-bottom-navigation v-model:active="active">
-      <var-bottom-navigation-item label="标签" icon="home" name="/home" />
-      <var-bottom-navigation-item label="标签" icon="magnify" badge />
+    <var-bottom-navigation v-show="routIns.meta.tabPage" v-model:active="active">
+      <var-bottom-navigation-item label="首页" icon="home" name="/home" />
+      <var-bottom-navigation-item label="关于" icon="magnify" badge name="/about" />
       <var-bottom-navigation-item
-        label="标签"
+        label="消息"
         icon="heart"
         :badge="badgeProps"
+        name="/message"
       />
       <var-bottom-navigation-item
-        label="标签"
+        label="我的"
         icon="account-circle"
         name="about"
       />

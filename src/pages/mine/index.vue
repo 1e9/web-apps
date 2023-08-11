@@ -1,12 +1,12 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'About',
+  name: 'Mine',
 })
 </script>
 
 <template>
   <div>
-    关于我们
+    我的
   </div>
 </template>
 

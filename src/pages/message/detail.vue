@@ -1,12 +1,11 @@
 <script setup lang="ts">
-defineOptions({
-  name: 'About',
-})
+const route = useRoute()
+const { id } = route.params
 </script>
 
 <template>
   <div>
-    关于我们
+    消息{{ id }}详情页面
   </div>
 </template>
 
