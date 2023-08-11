@@ -20,8 +20,10 @@ export default defineConfig({
       resolvers: [VarletUIResolver({ autoImport: true })],
     }),
     compression({ // 开启gzip压缩
+      algorithm: 'brotliCompress',
       include: [/\.html$/, /\.css$/, /\.js$/, /\.ttf$/],
       skipIfLargerOrEqual: true,
+      deleteOriginalAssets: false,
     }),
     mkcert(),
   ],
