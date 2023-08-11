@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { BadgeProps } from '@varlet/ui'
+import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import { getUserAvatar } from '@/apis/index'
 
 defineOptions({
@@ -7,7 +8,7 @@ defineOptions({
 })
 
 const router = useRouter()
-const routIns = useRoute()
+const routIns = useRoute() as RouteLocationNormalizedLoaded & { meta: { title: string; tabPage: boolean } }
 const active = ref('/home')
 const avatar = ref('')
 const { id, username } = window?.Telegram?.WebApp?.initDataUnsafe?.user || {}

@@ -27,7 +27,7 @@ const router: Router = createRouter({
 // 是否已登录，自行书写相关逻辑
 const isAuthenticated = true
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((_, from, next) => {
   if (from.path !== '/login' && !isAuthenticated)
     return next({ path: '/login' })
   else

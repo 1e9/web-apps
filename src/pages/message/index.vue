@@ -5,7 +5,7 @@ defineOptions({
 const loading = ref(false)
 const finished = ref(false)
 const router = useRouter()
-const list = ref([])
+const list = ref<number[]>([])
 
 function load() {
   setTimeout(() => {
@@ -18,7 +18,7 @@ function load() {
       finished.value = true
   }, 1000)
 }
-function goDetail(item: string) {
+function goDetail(item: number) {
   router.push({ path: `/message/detail/${item}` })
   console.log(item)
 }
