@@ -1,16 +1,16 @@
 import { defineConfig } from 'vite'
-import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import pxToViewport from 'postcss-px-to-viewport-8-plugin'
 import components from 'unplugin-vue-components/vite'
 import autoImport from 'unplugin-auto-import/vite'
 import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
 import compression from 'vite-plugin-compression2'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      '@': `${__dirname}/src}`,
+      '@': `${__dirname}/src`,
     },
   },
   css: {

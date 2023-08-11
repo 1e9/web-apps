@@ -7,7 +7,10 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AppContainer: typeof import('./src/components/AppContainer.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
     VarAppBar: typeof import('@varlet/ui')['_AppBarComponent']
     VarBottomNavigation: typeof import('@varlet/ui')['_BottomNavigationComponent']
     VarBottomNavigationItem: typeof import('@varlet/ui')['_BottomNavigationItemComponent']
@@ -15,5 +18,6 @@ declare module 'vue' {
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
+    VarResult: typeof import('@varlet/ui')['_ResultComponent']
   }
 }

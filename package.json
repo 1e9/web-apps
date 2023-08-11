@@ -11,7 +11,9 @@
   "dependencies": {
     "@varlet/touch-emulator": "^2.13.6",
     "@varlet/ui": "^2.13.6",
-    "vue": "^3.3.4"
+    "normalize.css": "^8.0.1",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@types/node": "^20.4.9",
