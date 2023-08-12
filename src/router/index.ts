@@ -17,10 +17,10 @@ const router: Router = createRouter({
       path: '/404',
       component: () => import('@/pages/frustrated/404.vue'),
     },
-    // {
-    //   path: '/:catchAll(.*)', // 此处需特别注意至于最底部
-    //   redirect: '/404',
-    // },
+    {
+      path: '/:catchAll(.*)', // 此处需特别注意至于最底部
+      redirect: '/404',
+    },
   ],
 })
 
