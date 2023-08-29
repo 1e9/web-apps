@@ -71,7 +71,7 @@ watch(
         </transition>
       </router-view>
     </section>
-    <var-bottom-navigation v-show="routIns.meta.tabPage" v-model:active="active">
+    <var-bottom-navigation v-show="routIns.meta.tabPage" v-model:active="active" safe-area>
       <var-bottom-navigation-item label="首页" icon="home" name="/home" />
       <var-bottom-navigation-item label="关于" icon="magnify" badge name="/about" />
       <var-bottom-navigation-item

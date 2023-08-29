@@ -12,6 +12,7 @@
     "@varlet/touch-emulator": "^2.13.6",
     "@varlet/ui": "^2.13.6",
     "normalize.css": "^8.0.1",
+    "pinia": "^2.1.6",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },

@@ -1,0 +1,20 @@
+:root {
+    --font-size-xs: 10px;
+    --font-size-sm: 12px;
+    --font-size-md: 14px;
+    --font-size-lg: 16px;
+    --icon-size-xs: 16px;
+    --icon-size-sm: 18px;
+    --icon-size-md: 20px;
+    --icon-size-lg: 22px;
+    --color-body: #fff;
+    --color-text: #3f3f46;
+    --color-primary: #006FEE;
+    --color-info: #9353d3;
+    --color-success: #17c964;
+    --color-warning: #f5a524;
+    --color-danger: #f31260;
+    --color-disabled: #e0e0e0;
+    --color-text-disabled: #aaa;
+    --cubic-bezier: cubic-bezier(0.25, 0.8, 0.5, 1);
+  }
